@@ -1,4 +1,4 @@
-/// <reference path="../typings/angular2/angular2.d.ts" />
+/// <reference path="../../typings/angular2/angular2.d.ts" />
 
 import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
 
@@ -7,16 +7,7 @@ import {Component, View, bootstrap, NgFor, NgIf} from 'angular2/angular2';
   appInjector: [FriendsService]
 })
 @View({
-  template: `
-  <h1>Hello {{name}}!</h1>
-    <p *ng-if="friends.length > 3">You have many friends</p>
-    <input #newfriend (keyup) (blur)="addFriend(newfriend.value, $event)">
-    <p>Friends:</p>
-    <ul>
-    <li  *ng-for="#friend of friends">
-      {{friend}}
-    </li>
-  </ul>`,
+  templateUrl: './templates/helloworldcomponent.html',
   directives: [NgFor, NgIf]
 })
 
@@ -28,13 +19,14 @@ class HelloWorldComponent {
     this.name = 'Tiago';
     this.friends = friendsService.friends;
   }
-  addFriend(name: string, $event) {
+  addFriend(input: { value: string, focus: Function }) {
+    var name = input.value;
     if (!!name && !!name.trim()) {
       this.friends.unshift(name);
     }
 
-    $event.target.value = null;
-    $event.target.focus();
+    input.value = null;
+    input.focus();
     return false;
   }
 }

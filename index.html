@@ -3,13 +3,75 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>Angular 2 simple application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-  <hello-world></hello-world>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Angular 2 simple application</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Sair</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Exemplos</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Amigos</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Novo amigo</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <div class="mdl-textfield mdl-js-textfield textfield-demo">
+              <input class="mdl-textfield__input" type="text" required="" />
+              <label class="mdl-textfield__label" >Nome...</label>
+              <span class="mdl-textfield__error">Insira o nome de seu amigo.</span>
+            </div>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              Adicionar
+            </a>
+          </div>
+          <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+              <i class="material-icons">camera_alt</i>
+            </button>
+          </div>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+          <i class="material-icons">add</i>
+        </button>
+        <hello-world></hello-world>
+      </div>
+    </main>
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer--left-section">
+        <div class="mdl-logo">Angular 2 simple application</div>
+        <ul class="mdl-mini-footer--link-list">
+          <li><a href="http://nquatro.com.br">N4Works</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
 
   <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.87/traceur-runtime.js"></script>
   <script src="https://jspm.io/system@0.16.js"></script>
   <script src="https://code.angularjs.org/2.0.0-alpha.28/angular2.dev.js"></script>
+  <script src="/bower_components/material-design-lite/material.min.js"></script>
   <script>System.import('scripts/services/friendsservice');</script>
   <script>System.import('scripts/components/helloworldcomponent');</script>
 </body>

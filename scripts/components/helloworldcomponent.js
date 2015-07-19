@@ -1,4 +1,4 @@
-/// <reference path="../typings/angular2/angular2.d.ts" />
+/// <reference path="../../typings/angular2/angular2.d.ts" />
 if (typeof __decorate !== "function") __decorate = function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -16,12 +16,13 @@ var HelloWorldComponent = (function () {
         this.name = 'Tiago';
         this.friends = friendsService.friends;
     }
-    HelloWorldComponent.prototype.addFriend = function (name, $event) {
+    HelloWorldComponent.prototype.addFriend = function (input) {
+        var name = input.value;
         if (!!name && !!name.trim()) {
             this.friends.unshift(name);
         }
-        $event.target.value = null;
-        $event.target.focus();
+        input.value = null;
+        input.focus();
         return false;
     };
     HelloWorldComponent = __decorate([
@@ -30,7 +31,7 @@ var HelloWorldComponent = (function () {
             appInjector: [FriendsService]
         }),
         angular2_1.View({
-            template: "\n  <h1>Hello {{name}}!</h1>\n    <p *ng-if=\"friends.length > 3\">You have many friends</p>\n    <input #newfriend (keyup) (blur)=\"addFriend(newfriend.value, $event)\">\n    <p>Friends:</p>\n    <ul>\n    <li  *ng-for=\"#friend of friends\">\n      {{friend}}\n    </li>\n  </ul>",
+            templateUrl: './templates/helloworldcomponent.html',
             directives: [angular2_1.NgFor, angular2_1.NgIf]
         }), 
         __metadata('design:paramtypes', [FriendsService])
